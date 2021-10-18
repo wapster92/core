@@ -1,13 +1,20 @@
 import { ConnectionOptions } from 'typeorm';
 import { join } from 'path';
+import { config } from 'dotenv-flow';
+
+config({
+  purge_dotenv: true,
+  silent: true,
+  path: join(__dirname, '..', '..')
+});
 
 export const dbConfig: ConnectionOptions = {
   type: 'postgres',
   host: 'localhost',
   port: 5432,
-  username: 'WapSter',
-  password: 'WapSter',
-  database: 'core',
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DB,
   entities: [join(__dirname, '**', '*.entity.{ts,js}')],
   synchronize: true,
   migrationsRun: false,
@@ -17,6 +24,6 @@ export const dbConfig: ConnectionOptions = {
   cli: {
     migrationsDir: 'src/migrations',
   },
-}
+};
 
-module.exports = dbConfig
+export default dbConfig;

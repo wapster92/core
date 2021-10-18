@@ -13,4 +13,6 @@ export class Users extends BaseEntity {
   @ManyToMany(() => Roles)
   @JoinTable({name: 'user_roles'})
   roles: Roles[]
+  @Column('text', {array: true})
+  refreshTokens: string[]
 }
