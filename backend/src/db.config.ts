@@ -18,6 +18,7 @@ export const dbConfig: ConnectionOptions = {
   entities: [join(__dirname, '**', '*.entity.{ts,js}')],
   synchronize: true,
   migrationsRun: false,
+  migrationsTableName: 'migrations',
   logging: true,
   logger: 'file',
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],

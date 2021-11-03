@@ -4,6 +4,7 @@ import {
   NestFastifyApplication,
 } from '@nestjs/platform-fastify';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { CrudConfigService } from '@nestjsx/crud';
 import { AppModule } from './app.module';
 import { config } from 'dotenv-flow';
 import { join } from 'path';
@@ -14,6 +15,18 @@ config({
   path: join(__dirname, '..', '..'),
 });
 
+CrudConfigService.load({
+  params: {
+    slug: {
+      field: 'id',
+      type: 'uuid',
+      primary: true,
+    },
+  },
+  routes: {
+    exclude: ['createManyBase']
+  }
+})
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
