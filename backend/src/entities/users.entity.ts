@@ -12,18 +12,8 @@ export class Users extends BaseEntity {
   email: string
   @Column()
   password: string
-  @ManyToMany(() => Roles, r => r.id)
-  @JoinTable({
-    name: 'user_roles',
-    joinColumn: {
-      name: 'user_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'role_id',
-      referencedColumnName: 'id',
-    },
-  })
+  @ManyToMany(() => Roles)
+  @JoinTable()
   roles: Roles[]
   @Column('text', {array: true, nullable: true })
   refreshTokens: string[]
