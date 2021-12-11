@@ -1,22 +1,30 @@
-import { BeforeInsert, BeforeUpdate, Column, Entity, JoinTable, ManyToMany, Unique } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  Unique,
+} from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { Roles } from './roles.entity';
 import * as bcrypt from 'bcrypt';
 
-@Entity({name: 'users'})
+@Entity({ name: 'users' })
 @Unique(['username', 'email'])
 export class Users extends BaseEntity {
-  @Column({type: 'varchar'})
-  username: string
-  @Column({type: 'varchar'})
-  email: string
+  @Column({ type: 'varchar' })
+  username: string;
+  @Column({ type: 'varchar' })
+  email: string;
   @Column()
-  password: string
+  password: string;
   @ManyToMany(() => Roles)
-  @JoinTable()
-  roles: Roles[]
-  @Column('text', {array: true, nullable: true })
-  refreshTokens: string[]
+  @JoinTable({ name: 'users_roles' })
+  roles: Roles[];
+  @Column('text', { array: true, nullable: true })
+  refreshTokens: string[];
 
   @BeforeInsert()
   @BeforeUpdate()
