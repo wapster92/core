@@ -5,7 +5,7 @@ import { AuthRegisterDto } from '../dto/auth.dto';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
-  @Post('register')
+  @Post('registration')
   register(@Body() dto: AuthRegisterDto) {
     return this.authService.register(dto);
   }

@@ -21,7 +21,7 @@ export class Users extends BaseEntity {
   @Column()
   password: string;
   @ManyToMany(() => Roles)
-  @JoinTable({ name: 'users_roles' })
+  @JoinTable({ name: 'user_roles' })
   roles: Roles[];
   @Column('text', { array: true, nullable: true })
   refreshTokens: string[];

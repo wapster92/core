@@ -11,19 +11,19 @@ export class AuthService {
     @InjectRepository(Users)
     private usersRepository: Repository<Users>,
     @InjectRepository(Roles)
-    private rolesRepository: Repository<Roles>
+    private rolesRepository: Repository<Roles>,
   ) {}
   login(dto: AuthLoginDto) {
-    console.log(dto)
-    return true
+    console.log(dto);
+    return true;
   }
   async register(dto: AuthRegisterDto) {
     try {
       const candidate = await this.usersRepository.find({
         where: [
-          {username: Like(`%${dto.username}%`)},
-          {email: Like(`%${dto.email}%`)}
-        ]
+          { username: Like(`%${dto.username}%`) },
+          { email: Like(`%${dto.email}%`) },
+        ],
       });
       if (candidate.length) {
         throw new HttpException(
@@ -31,11 +31,11 @@ export class AuthService {
           HttpStatus.UNAUTHORIZED,
         );
       }
-      const roleUser = await this.rolesRepository.findOne({ role: "USER" })
-      const user = new Users()
+      const roleUser = await this.rolesRepository.findOne({ role: 'USER' });
+      const user = new Users();
       user.username = dto.username;
       user.password = dto.password;
-      user.email = dto.email
+      user.email = dto.email;
       user.roles = [roleUser];
       await this.usersRepository.save(user);
       return user;

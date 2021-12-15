@@ -1,20 +1,20 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { Exclude } from "class-transformer";
+import { Exclude } from 'class-transformer';
 import { BaseDto } from './base.dto';
 import { Roles } from '../entities/roles.entity';
 
 export class UsersDto extends BaseDto {
   @ApiProperty()
-  username: string
+  username: string;
   @ApiProperty()
-  email: string
+  email: string;
   @ApiProperty()
   @Exclude()
-  password: string
+  password: string;
   @ApiProperty()
-  roles: Roles[] = []
+  roles: Roles[] = [];
   @ApiProperty()
-  refreshTokens?: string[]
+  refreshTokens?: string[];
 }
 export class CreateUserDto {
   @ApiProperty()

@@ -14,6 +14,6 @@ export class Roles extends BaseEntity {
   description: string;
 
   @ManyToMany(() => Users, (users) => users.roles)
-  @JoinTable({ name: 'users_roles' })
+  @JoinTable({ name: 'user_roles' })
   users: Users[];
 }

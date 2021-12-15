@@ -24,13 +24,13 @@ CrudConfigService.load({
     },
   },
   routes: {
-    exclude: ['createManyBase']
-  }
-})
+    exclude: ['createManyBase'],
+  },
+});
 async function bootstrap() {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter()
+    new FastifyAdapter(),
   );
   app.setGlobalPrefix('/api');
   app.enableCors({ credentials: true, origin: '*' });
