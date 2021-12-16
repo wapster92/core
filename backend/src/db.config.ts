@@ -5,16 +5,16 @@ import { config } from 'dotenv-flow';
 config({
   purge_dotenv: true,
   silent: true,
-  path: join(__dirname, '..', '..')
+  path: join(__dirname, '..', '..'),
 });
 
 export const dbConfig: ConnectionOptions = {
-  type: 'postgres',
+  type: 'mysql',
   host: 'localhost',
-  port: 5432,
-  username: process.env.POSTGRES_USER,
-  password: process.env.POSTGRES_PASSWORD,
-  database: process.env.POSTGRES_DB,
+  port: 3306,
+  username: 'root',
+  password: 'root',
+  database: 'core',
   entities: [join(__dirname, '**', '*.entity.{ts,js}')],
   synchronize: true,
   migrationsRun: false,

@@ -5,25 +5,23 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
-  Unique,
 } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { Roles } from './roles.entity';
 import * as bcrypt from 'bcrypt';
 
 @Entity({ name: 'users' })
-@Unique(['username', 'email'])
 export class Users extends BaseEntity {
-  @Column({ type: 'varchar' })
+  @Column()
   username: string;
-  @Column({ type: 'varchar' })
+  @Column()
   email: string;
   @Column()
   password: string;
   @ManyToMany(() => Roles)
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];
-  @Column('text', { array: true, nullable: true })
+  @Column({ type: 'simple-array', default: null })
   refreshTokens: string[];
 
   @BeforeInsert()
