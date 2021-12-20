@@ -21,8 +21,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm": "npx ts-node -r tsconfig-paths/register ./node_modules/typeorm/cli.js --config src/db.config.ts",
     "migrate:generate": "yarn run typeorm migration:generate -n",
-    "migrate:create": "yarn run typeorm migration:create -n",
-    "migrate:run": "yarn run typeorm migration:run"
+    "mi:c": "yarn run typeorm migration:create -n",
+    "mi:r": "yarn run typeorm migration:run",
+    "mi:c:e": "yarn run typeorm entity:create -n"
   },
   "dependencies": {
     "@nestjs/common": "^8.0.0",

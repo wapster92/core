@@ -24,6 +24,7 @@ export const dbConfig: ConnectionOptions = {
   migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   cli: {
     migrationsDir: 'src/migrations',
+    entitiesDir: 'src/entities',
   },
 };
 

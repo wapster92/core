@@ -1,21 +1,8 @@
-version: '3'
+version: '3.8'
 services:
-  database:
-    image: "postgres" # use latest official postgres version
-    environment:
-      - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-      - POSTGRES_DB=${POSTGRES_DB}
-    volumes:
-      - ./data:/var/lib/postgresql/data/
-    ports:
-      - "5432:5432"
-    networks:
-      - core
-
-  db:
+  mysql:
     image: mysql:5.7.22
-    container_name: db
+    container_name: ${PROJECT_NAME}_mysql
     tty: true
     ports:
       - "3306:3306"
@@ -31,4 +18,5 @@ services:
 
 networks:
   core:
+    name: ${PROJECT_NAME}_network
     driver: bridge
