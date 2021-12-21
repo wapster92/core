@@ -16,6 +16,9 @@ import { UsersDto, CreateUserDto } from '../dto/users.dto';
       roles: {
         eager: true,
       },
+      refreshTokens: {
+        eager: true,
+      },
     },
   },
 })

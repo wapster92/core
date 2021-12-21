@@ -3,6 +3,12 @@ import { Exclude } from 'class-transformer';
 import { BaseDto } from './base.dto';
 import { Roles } from '../entities/roles.entity';
 
+interface RefreshTokens {
+  id: number;
+  token: string;
+  userId: number;
+}
+
 export class UsersDto extends BaseDto {
   @ApiProperty()
   username: string;
@@ -14,7 +20,7 @@ export class UsersDto extends BaseDto {
   @ApiProperty()
   roles: Roles[] = [];
   @ApiProperty()
-  refreshTokens?: string[];
+  refreshTokens: RefreshTokens[];
 }
 export class CreateUserDto {
   @ApiProperty()

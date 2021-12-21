@@ -1,6 +1,14 @@
-import {BaseEntity} from "./base.entity";
-import {Entity} from "typeorm";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Users } from './users.entity';
 
-export class RefreshTokensEntity extends BaseEntity {
-  @Entity('refresh_tokens')
+@Entity()
+export class RefreshTokens {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @ManyToOne(() => Users, (user) => user.refreshTokens)
+  user: Users;
+
+  @Column()
+  token: string;
 }

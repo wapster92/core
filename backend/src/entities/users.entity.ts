@@ -5,10 +5,12 @@ import {
   Entity,
   JoinTable,
   ManyToMany,
+  OneToMany,
 } from 'typeorm';
 import { BaseEntity } from './base.entity';
 import { Roles } from './roles.entity';
 import * as bcrypt from 'bcrypt';
+import { RefreshTokens } from './refreshTokens.entity';
 
 @Entity({ name: 'users' })
 export class Users extends BaseEntity {
@@ -21,8 +23,8 @@ export class Users extends BaseEntity {
   @ManyToMany(() => Roles)
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];
-  @Column({ type: 'simple-array', default: null })
-  refreshTokens: string[];
+  @OneToMany(() => RefreshTokens, (refreshTokens) => refreshTokens.user)
+  refreshTokens: RefreshTokens[];
 
   @BeforeInsert()
   @BeforeUpdate()
