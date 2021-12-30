@@ -13,9 +13,13 @@ export class AuthService {
     @InjectRepository(Roles)
     private rolesRepository: Repository<Roles>,
   ) {}
-  login(dto: AuthLoginDto) {
-    console.log(dto);
-    return true;
+  async login(dto: AuthLoginDto) {
+    const candidate = await this.usersRepository.find({
+      where: [
+        { username: Like(`%${dto.login}%`) },
+        { email: Like(`%${dto.login}%`) },
+      ],
+    });
   }
   async register(dto: AuthRegisterDto) {
     try {
