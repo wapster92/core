@@ -23,7 +23,7 @@ export class Users extends BaseEntity {
   @ManyToMany(() => Roles)
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];
-  @OneToMany(() => RefreshTokens, (refreshTokens) => refreshTokens.user)
+  @OneToMany(() => RefreshTokens, (refreshTokens) => refreshTokens.id)
   refreshTokens: RefreshTokens[];
 
   @BeforeInsert()
