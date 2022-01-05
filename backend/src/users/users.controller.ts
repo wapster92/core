@@ -2,7 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { UsersCrudService } from './users.service';
 import { Crud, CrudController } from '@nestjsx/crud';
 import { Users } from '../entities/users.entity';
-import { UsersDto, CreateUserDto } from '../dto/users.dto';
+import { UsersDto, CreateUserDto } from './dto/users.dto';
 
 @Crud({
   model: {

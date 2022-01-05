@@ -14,16 +14,16 @@ import { RefreshTokens } from './refreshTokens.entity';
 
 @Entity({ name: 'users' })
 export class Users extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   username: string;
-  @Column()
+  @Column({ unique: true })
   email: string;
   @Column()
   password: string;
   @ManyToMany(() => Roles)
   @JoinTable({ name: 'user_roles' })
   roles: Roles[];
-  @OneToMany(() => RefreshTokens, (refreshTokens) => refreshTokens.id)
+  @OneToMany(() => RefreshTokens, (refreshTokens) => refreshTokens.user)
   refreshTokens: RefreshTokens[];
 
   @BeforeInsert()
