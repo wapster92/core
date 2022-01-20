@@ -11,7 +11,7 @@ import { AuthGuard } from '../auth/auth.guard';
   },
   routes: {
     getManyBase: {
-      decorators: [AuthGuard(['USER'])],
+      // decorators: [AuthGuard(['USER'])],
     },
   },
 })

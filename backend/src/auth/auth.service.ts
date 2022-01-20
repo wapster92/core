@@ -47,11 +47,11 @@ export class AuthService {
         HttpStatus.UNAUTHORIZED,
       );
 
-    const refreshToken = await this.createRefreshToken(user);
+    const { token } = await this.createRefreshToken(user);
     const accessToken = this.createToken(user, 'ACCESS');
     return {
       ...user,
-      refreshToken: refreshToken.token,
+      refreshToken: token,
       accessToken,
     };
   }
