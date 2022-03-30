@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { BaseDto } from './base.dto';
-import { Roles } from '../entities/roles.entity';
+import { BaseDto } from '../../dto/base.dto';
+import { Roles } from '../../entities/roles.entity';
 
 interface RefreshTokens {
   id: number;

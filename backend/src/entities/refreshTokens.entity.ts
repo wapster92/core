@@ -9,6 +9,6 @@ export class RefreshTokens {
   @ManyToOne(() => Users, (user) => user.refreshTokens)
   user: Users;
 
-  @Column()
+  @Column({ type: 'mediumtext' })
   token: string;
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { BaseDto } from './base.dto';
+import { BaseDto } from '../../dto/base.dto';
 
 export class RolesDto extends BaseDto{
   @ApiProperty()

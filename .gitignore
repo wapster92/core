@@ -77,3 +77,4 @@ out
 gen
 database/*
 dbdata
+dbdata/*

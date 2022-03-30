@@ -14,9 +14,9 @@ import { RefreshTokens } from './refreshTokens.entity';
 
 @Entity({ name: 'users' })
 export class Users extends BaseEntity {
-  @Column()
+  @Column({ unique: true })
   username: string;
-  @Column()
+  @Column({ unique: true })
   email: string;
   @Column()
   password: string;
