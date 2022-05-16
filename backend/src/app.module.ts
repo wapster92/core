@@ -6,6 +6,7 @@ import { dbConfig } from './db.config';
 import { AuthModule } from './auth/auth.module';
 import { JwtAuthGuard } from './auth/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { OrdersModule } from './orders/orders.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { APP_GUARD } from '@nestjs/core';
     TypeOrmModule.forRoot(dbConfig),
     RolesModule,
     AuthModule,
+    OrdersModule,
   ],
   controllers: [],
   providers: [
