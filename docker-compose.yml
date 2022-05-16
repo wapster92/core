@@ -1,18 +1,21 @@
 version: '3.8'
+
 services:
   mysql:
-    image: mysql:5.7.22
     container_name: ${PROJECT_NAME}_mysql
-    tty: true
-    ports:
-      - "3306:3306"
+    build:
+      context: ./mysql
+      dockerfile: ./Dockerfile
     environment:
       MYSQL_ROOT_HOST: '%'
-      MYSQL_USER: root
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: core
     volumes:
-      - ./dbdata:/var/lib/mysql/
+      - ./mysql/db:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
     networks:
       - core
 
