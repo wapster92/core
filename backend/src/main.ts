@@ -9,13 +9,6 @@ CrudConfigService.load({
   query: {
     alwaysPaginate: true,
   },
-  params: {
-    slug: {
-      field: 'id',
-      type: 'uuid',
-      primary: true,
-    },
-  },
   routes: {
     //exclude: ['createManyBase'],
   },
