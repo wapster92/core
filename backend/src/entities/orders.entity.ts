@@ -1,5 +1,6 @@
 import { BaseEntity } from './base.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany } from 'typeorm';
+import { Tags } from './tags.entity';
 
 @Entity({ name: 'orders' })
 export class Orders extends BaseEntity {
@@ -13,4 +14,7 @@ export class Orders extends BaseEntity {
   amount: number;
   @Column({ type: 'boolean', default: false })
   completed: boolean;
+  @ManyToMany(() => Tags)
+  @JoinTable({ name: 'tags_order' })
+  tags: Tags[];
 }
