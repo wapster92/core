@@ -2,7 +2,7 @@ import {
   Column,
   Entity,
   JoinTable,
-  ManyToMany,
+  ManyToMany, OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { Orders } from './orders.entity';
@@ -18,7 +18,6 @@ export class Tags {
   @Column()
   color: string;
 
-  @ManyToMany(() => Orders, (orders) => orders.tags)
-  @JoinTable({ name: 'tags_order' })
+  @OneToMany(() => Orders, (order) => order.tag)
   orders: Orders[];
 }

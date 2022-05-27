@@ -8,9 +8,13 @@ import { Orders } from '../entities/orders.entity';
   model: {
     type: OrdersDto,
   },
-  // query: {
-  //   alwaysPaginate: true,
-  // }
+  query: {
+    join: {
+      tag: {
+        eager: true,
+      },
+    },
+  },
 })
 @Controller('orders')
 export class OrdersController implements CrudController<Orders> {
