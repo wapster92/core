@@ -6,6 +6,6 @@ export class RolesDto extends BaseDto{
   role: string
   @ApiProperty()
   name: string
-  @ApiProperty()
+  @ApiProperty({description: 'Описание роли'})
   description: string
 }
