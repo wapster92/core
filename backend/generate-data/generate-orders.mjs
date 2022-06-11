@@ -5,7 +5,7 @@ const creatingOrders = async () => {
   const tags = await axios.get('http://localhost:5000/api/tags')
   const tagsLength = tags.data.data.length;
   console.log(tags.data.data)
-  const bodys = [...Array(10)].map(() => ({
+  const bodys = [...Array(2000)].map(() => ({
     name: faker.name.findName(),
     deadline: faker.date.between('2022-01-01T00:00:00.000Z', '2030-01-01T23:59:59.000Z'),
     company: faker.company.companyName(),
